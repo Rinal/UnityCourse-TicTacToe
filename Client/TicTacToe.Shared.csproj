@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\ICheckableField.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\ISettableField.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\SymbolModel.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Symbols.cs" />
      <None Include="Assets\Plugins\TicTacToe.Shared\TicTacToe.Shared.asmdef" />

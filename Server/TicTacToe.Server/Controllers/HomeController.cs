@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace TicTacToe.Server.Controllers
+namespace TicTacToe.Server
 {
     public class HomeController : Controller
     {
