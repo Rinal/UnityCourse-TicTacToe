@@ -4,7 +4,6 @@
     "com.external.extenject": "ssh://git@bitbucket.org/unity_developers/com.external.extenject.git#2.0.0",
     "com.external.unirx": "ssh://git@bitbucket.org/unity_developers/com.external.unirx.git#2.0.0",
     "com.external.unitask": "ssh://git@bitbucket.org/unity_developers/com.external.unitask.git#1.1.0",
-    "com.innovecs.effects": "ssh://git@bitbucket.org/unity_developers/com.innovecs.effects.git#1.0.2",
     "com.unity.2d.animation": "3.2.2",
     "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.psdimporter": "2.1.4",
@@ -66,10 +65,6 @@
     "com.external.unitask": {
       "revision": "1.1.0",
       "hash": "c03530619c6386c3c42b1ea122961d0394f3192f"
-    },
-    "com.innovecs.effects": {
-      "revision": "1.0.2",
-      "hash": "906ca3c6cbb43cd94553df11c4acce33976d88a6"
     }
   }
 }
