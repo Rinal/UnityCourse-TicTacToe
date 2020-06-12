@@ -1,14 +1,10 @@
 {
   "dependencies": {
-    "com.external.behaviordesigner": "ssh://git@bitbucket.org/unity_developers/com.external.behaviordesigner.git#1.3.0",
     "com.external.dotween": "ssh://git@bitbucket.org/unity_developers/com.external.dotween.git#1.0.2",
     "com.external.extenject": "ssh://git@bitbucket.org/unity_developers/com.external.extenject.git#2.0.0",
     "com.external.unirx": "ssh://git@bitbucket.org/unity_developers/com.external.unirx.git#2.0.0",
     "com.external.unitask": "ssh://git@bitbucket.org/unity_developers/com.external.unitask.git#1.1.0",
-    "com.innovecs.behaviordesigner.zenject": "ssh://git@bitbucket.org/unity_developers/com.innovecs.behaviordesigner.zenject.git#2.2.0",
-    "com.innovecs.dialoguessystem": "ssh://git@bitbucket.org/unity_developers/com.innovecs.dialoguessystem.git#2.1.0",
     "com.innovecs.effects": "ssh://git@bitbucket.org/unity_developers/com.innovecs.effects.git#1.0.2",
-    "com.innovecs.unityhelpers": "ssh://git@bitbucket.org/unity_developers/com.innovecs.unityhelpers.git#1.2.2",
     "com.unity.2d.animation": "3.2.2",
     "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.psdimporter": "2.1.4",
@@ -55,10 +51,6 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
-    "com.external.behaviordesigner": {
-      "revision": "1.3.0",
-      "hash": "113edc2689d7788fcb0a5622bc5f82686156241c"
-    },
     "com.external.dotween": {
       "revision": "1.0.2",
       "hash": "ee6f6565a9d68321a06aff7c3c5ffdd4beeff9a1"
@@ -75,21 +67,9 @@
       "revision": "1.1.0",
       "hash": "c03530619c6386c3c42b1ea122961d0394f3192f"
     },
-    "com.innovecs.behaviordesigner.zenject": {
-      "revision": "2.2.0",
-      "hash": "49e4afca980801019ff9a0ab917094db9670a8b9"
-    },
-    "com.innovecs.dialoguessystem": {
-      "revision": "2.1.0",
-      "hash": "e596d846b53dd5b8ed1e5c72184168d340ee0003"
-    },
     "com.innovecs.effects": {
       "revision": "1.0.2",
       "hash": "906ca3c6cbb43cd94553df11c4acce33976d88a6"
-    },
-    "com.innovecs.unityhelpers": {
-      "revision": "1.2.2",
-      "hash": "eef0da0570018aac29364424df134acb1e1b8cae"
     }
   }
 }
