@@ -18,7 +18,6 @@
 /*.booproj
 /.idea*/
 .idea/
-packages/
 .azure/
 
 # User-specific files
@@ -74,9 +73,6 @@ MatchPoker.Libraries/Photon/PhotonServerDeploy/bin_Win64/Shim
 *.VisualState.xml
 TestResult.xml
 
-# NuGet Packages Directory
-packages
-
 # Build results
 /output
 [Dd]ebug/
@@ -128,8 +124,6 @@ _TeamCity*
 
 # Click-Once directory
 publish/
-
-# NuGet Packages
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
