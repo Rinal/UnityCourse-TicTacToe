@@ -1,8 +1,15 @@
+using Newtonsoft.Json;
+
 namespace TicTacToe.Shared
 {
-    public enum SymbolModel : byte
+    public sealed class SymbolModel
     {
-        X = 0,
-        O = 1
+        [JsonProperty]
+        public Symbols Symbol { get; private set; }
+
+        public SymbolModel(Symbols symbol)
+        {
+            Symbol = symbol;
+        }
     }
 }

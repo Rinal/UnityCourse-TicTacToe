@@ -10,6 +10,13 @@
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\SymbolModel.cs">
         <Link>TicTacToe.Shared\Models\SymbolModel.cs</Link>
       </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Symbols.cs">
+        <Link>TicTacToe.Shared\Models\Symbols.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
 
 </Project>

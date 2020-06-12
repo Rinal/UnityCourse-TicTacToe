@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\SymbolModel.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Symbols.cs" />
      <None Include="Assets\Plugins\TicTacToe.Shared\TicTacToe.Shared.asmdef" />
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -260,6 +261,9 @@
  </Reference>
  <Reference Include="Zenject-usage">
  <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/PackageCache/com.external.extenject@58eb9fda9e/Source/Usage/Zenject-usage.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Assets/Plugins/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
