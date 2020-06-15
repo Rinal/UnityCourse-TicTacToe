@@ -59,6 +59,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\Bootstrap\BootstrapTree.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\TicTacToe\State\GameField\ClientFieldModel.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\TicTacToe\State\GameField\FieldPresenter.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\TicTacToe\State\GameField\SymbolPresenter.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\TicTacToe\State\GameStateInstaller.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\TicTacToe\TicTacToeTree.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClient.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClientInstaller.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\IFieldChangedEventsObservable.cs" />
@@ -72,6 +77,9 @@
  </Reference>
  <Reference Include="UniRx.Async">
  <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UniRx.Async.dll</HintPath>
+ </Reference>
+ <Reference Include="Innovecs.DialogSystem.Runtime">
+ <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/Innovecs.DialogSystem.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

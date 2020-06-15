@@ -7,14 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedData.cs">
-        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedData.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEventData.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEventData.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs">
         <Link>TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs">
         <Link>TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\FieldSize.cs">
+        <Link>TicTacToe.Shared\Models\Field\FieldSize.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs">
         <Link>TicTacToe.Shared\Models\Field\ICheckableField.cs</Link>

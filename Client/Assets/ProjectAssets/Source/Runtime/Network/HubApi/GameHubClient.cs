@@ -70,15 +70,15 @@ namespace TicTacToe.Client
             await m_connection.InvokeAsync(nameof(IJoinOperation.Join), json);
         }
 
-        private Subject<FieldChangedData> m_hubEvent = default;
+        private Subject<FieldChangedEventData> m_hubEvent = default;
 
-        public IObservable<FieldChangedData> OnFieldChanged()
+        public IObservable<FieldChangedEventData> OnFieldChanged()
         {
             if (m_hubEvent == null)
             {
-                m_hubEvent = new Subject<FieldChangedData>();
+                m_hubEvent = new Subject<FieldChangedEventData>();
                 m_connection
-                    .On<string>(nameof(IFieldChangedEvent.OnFieldChanged), (json) =>
+                    .On<string>(nameof(IFieldChangedEvent.OnFieldChanged), json =>
                     {
                         Debug.Log($"{nameof(GameHubClient)}: got event with data {json}");
                         // JObject jo = JObject.Parse(json);

@@ -4,6 +4,7 @@
     "com.external.extenject": "ssh://git@bitbucket.org/unity_developers/com.external.extenject.git#2.0.0",
     "com.external.unirx": "ssh://git@bitbucket.org/unity_developers/com.external.unirx.git#2.0.0",
     "com.external.unitask": "ssh://git@bitbucket.org/unity_developers/com.external.unitask.git#1.1.0",
+    "com.innovecs.dialoguessystem": "ssh://git@bitbucket.org/unity_developers/com.innovecs.dialoguessystem.git#2.1.0",
     "com.innovecs.unityhelpers": "ssh://git@bitbucket.org/unity_developers/com.innovecs.unityhelpers.git#1.2.2",
     "com.unity.2d.animation": "3.2.2",
     "com.unity.2d.pixel-perfect": "2.0.4",
@@ -70,6 +71,10 @@
     "com.innovecs.unityhelpers": {
       "revision": "1.2.2",
       "hash": "eef0da0570018aac29364424df134acb1e1b8cae"
+    },
+    "com.innovecs.dialoguessystem": {
+      "revision": "2.1.0",
+      "hash": "e596d846b53dd5b8ed1e5c72184168d340ee0003"
     }
   }
 }

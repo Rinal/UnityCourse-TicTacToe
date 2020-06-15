@@ -5,6 +5,6 @@ namespace TicTacToe.Client
 {
     public interface IFieldChangedEventsObservable
     {
-        IObservable<FieldChangedData> OnFieldChanged();
+        IObservable<FieldChangedEventData> OnFieldChanged();
     }
 }

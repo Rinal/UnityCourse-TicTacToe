@@ -5,8 +5,7 @@ namespace TicTacToe.Server
 {
     public sealed class ServerFieldModel
     {
-        public const int Size = 3;
-        private readonly SymbolModel[,] m_field = new SymbolModel[Size, Size];
+        private readonly SymbolModel[,] m_field = new SymbolModel[FieldSize.Value, FieldSize.Value];
 
         public bool IsEmpty(int x, int y)
         {
@@ -20,7 +19,7 @@ namespace TicTacToe.Server
 
         private bool IsValid(int x, int y)
         {
-            return x >= 0 && x < Size && y >= 0 && y < Size;
+            return x >= 0 && x < FieldSize.Value && y >= 0 && y < FieldSize.Value;
         }
     }
 }
