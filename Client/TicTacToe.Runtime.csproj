@@ -61,6 +61,7 @@
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\Bootstrap\BootstrapTree.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClient.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClientInstaller.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\IFieldChangedEventsObservable.cs" />
      <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\IHubConnection.cs" />
      <None Include="Assets\ProjectAssets\Source\Runtime\TicTacToe.Runtime.asmdef" />
  <Reference Include="Zenject">

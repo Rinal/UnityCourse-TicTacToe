@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 using TicTacToe.Shared;
 using UniRx;
@@ -8,6 +9,8 @@ using Zenject;
 namespace TicTacToe.Client
 {
     public sealed class GameHubClient : IHubConnection
+        , IJoinOperation
+        , IFieldChangedEventsObservable
     {
         private readonly HubConnection m_connection = default;
         private readonly string m_uri = default;
@@ -60,6 +63,30 @@ namespace TicTacToe.Client
                     return Observable.ReturnUnit();
                 });
             return m_stopConnectionProcess;
+        }
+
+        public async Task Join(string json)
+        {
+            await m_connection.InvokeAsync(nameof(IJoinOperation.Join), json);
+        }
+
+        private Subject<FieldChangedData> m_hubEvent = default;
+
+        public IObservable<FieldChangedData> OnFieldChanged()
+        {
+            if (m_hubEvent == null)
+            {
+                m_hubEvent = new Subject<FieldChangedData>();
+                m_connection
+                    .On<string>(nameof(IFieldChangedEvent.OnFieldChanged), (json) =>
+                    {
+                        Debug.Log($"{nameof(GameHubClient)}: got event with data {json}");
+                        // JObject jo = JObject.Parse(json);
+                        // m_hubEvent.OnNext(jo);
+                    });
+            }
+
+            return m_hubEvent;
         }
     }
 }

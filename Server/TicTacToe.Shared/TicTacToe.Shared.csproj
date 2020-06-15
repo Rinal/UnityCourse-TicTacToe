@@ -7,8 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\IEventHubClient.cs">
-        <Link>TicTacToe.Shared\HubApi\IEventHubClient.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedData.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedData.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs">
         <Link>TicTacToe.Shared\Models\Field\ICheckableField.cs</Link>
@@ -22,12 +28,6 @@
       <Compile Remove="obj\**" />
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs">
         <Link>TicTacToe.Shared\Models\Field\Symbols.cs</Link>
-      </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Events\EventCodes.cs">
-        <Link>TicTacToe.Shared\Transport\Events\EventCodes.cs</Link>
-      </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Events\Field\FieldChangedEvent.cs">
-        <Link>TicTacToe.Shared\Transport\Events\Field\FieldChangedEvent.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs">
         <Link>TicTacToe.Shared\Transport\Paths.cs</Link>

@@ -1,4 +1,5 @@
 ﻿using System;
+using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -26,6 +27,34 @@ namespace TicTacToe.Client
                     return Observable.Never<Unit>();
                 })
                 .Subscribe(_ => { Debug.Log($"{nameof(BootstrapTree)}: the connection was open!"); });
+
+
+
+            m_fieldChangedEventsObservable
+                .OnFieldChanged()
+                .Subscribe(_ =>
+                {
+                    Debug.LogError(" This is a field!");
+                });
+
+        }
+
+        [Inject] private IFieldChangedEventsObservable m_fieldChangedEventsObservable = default;
+        
+        [Inject] private IJoinOperation m_joinOperation = default;
+
+        [ContextMenu("Foo1")]
+        private void Test1Operation()
+        {
+            m_joinOperation
+                .Join("tee")
+                .ToObservable()
+                .Catch<Unit, Exception>(ex =>
+                {
+                    Debug.LogException(ex);
+                    return Observable.Never<Unit>();
+                })
+                .Subscribe();
         }
     }
 }
