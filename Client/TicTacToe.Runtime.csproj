@@ -12,10 +12,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B5CE0556-813B-ACAF-1CCE-C41A12709E21}</ProjectGuid>
+    <ProjectGuid>{69228949-018B-401E-2E86-549730E832E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>TicTacToe.Shared</AssemblyName>
+    <AssemblyName>TicTacToe.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -58,15 +58,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\IEventHubClient.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\ISettableField.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\SymbolModel.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\Events\EventCodes.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\Events\Field\FieldChangedEvent.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs" />
-     <None Include="Assets\Plugins\TicTacToe.Shared\TicTacToe.Shared.asmdef" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Features\Bootstrap\BootstrapTree.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClient.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\GameHubClientInstaller.cs" />
+     <Compile Include="Assets\ProjectAssets\Source\Runtime\Network\HubApi\IHubConnection.cs" />
+     <None Include="Assets\ProjectAssets\Source\Runtime\TicTacToe.Runtime.asmdef" />
+ <Reference Include="Zenject">
+ <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/Zenject.dll</HintPath>
+ </Reference>
+ <Reference Include="UniRx">
+ <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UniRx.dll</HintPath>
+ </Reference>
+ <Reference Include="UniRx.Async">
+ <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UniRx.Async.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/stas/Documents/Unity3D/UnityCourses/UnityCourse-TicTacToe/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -700,6 +705,12 @@
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.15f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="TicTacToe.Shared.csproj">
+      <Project>{B5CE0556-813B-ACAF-1CCE-C41A12709E21}</Project>
+      <Name>TicTacToe.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

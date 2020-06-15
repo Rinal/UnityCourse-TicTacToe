@@ -7,19 +7,31 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\ICheckableField.cs">
-        <Link>TicTacToe.Shared\Models\ICheckableField.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\IEventHubClient.cs">
+        <Link>TicTacToe.Shared\HubApi\IEventHubClient.cs</Link>
       </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\ISettableField.cs">
-        <Link>TicTacToe.Shared\Models\ISettableField.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs">
+        <Link>TicTacToe.Shared\Models\Field\ICheckableField.cs</Link>
       </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\SymbolModel.cs">
-        <Link>TicTacToe.Shared\Models\SymbolModel.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ISettableField.cs">
+        <Link>TicTacToe.Shared\Models\Field\ISettableField.cs</Link>
       </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Symbols.cs">
-        <Link>TicTacToe.Shared\Models\Symbols.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\SymbolModel.cs">
+        <Link>TicTacToe.Shared\Models\Field\SymbolModel.cs</Link>
       </Compile>
       <Compile Remove="obj\**" />
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs">
+        <Link>TicTacToe.Shared\Models\Field\Symbols.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Events\EventCodes.cs">
+        <Link>TicTacToe.Shared\Transport\Events\EventCodes.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Events\Field\FieldChangedEvent.cs">
+        <Link>TicTacToe.Shared\Transport\Events\Field\FieldChangedEvent.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs">
+        <Link>TicTacToe.Shared\Transport\Paths.cs</Link>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -32,6 +44,12 @@
 
     <ItemGroup>
       <None Remove="obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User">
+        <Link>TicTacToe.Shared\Models\User</Link>
+      </Folder>
     </ItemGroup>
 
 </Project>
