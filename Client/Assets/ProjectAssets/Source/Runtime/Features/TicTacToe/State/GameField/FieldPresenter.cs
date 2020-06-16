@@ -86,7 +86,7 @@ namespace TicTacToe.Client
             if (m_checkableField.IsEmpty(cell.x, cell.y))
             {
                 //TODO Tem hardcoded!
-                m_settableField.Set(Symbols.X, cell.x, cell.y);
+                m_settableField.Set( Symbols.O, cell.x, cell.y);
             }
             else
             {
