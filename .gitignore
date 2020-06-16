@@ -6,3 +6,5 @@ bin/
 obj/
 
 Client.sln
+Client/TicTacToe.Runtime.csproj
+Client/TicTacToe.Shared.csproj
