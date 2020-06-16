@@ -82,4 +82,79 @@
       <None Remove="TicTacToe.Shared\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events.meta">
+        <Link>TicTacToe.Shared\HubApi\Events.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs.meta">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field.meta">
+        <Link>TicTacToe.Shared\Models\Field.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\CellModel.cs.meta">
+        <Link>TicTacToe.Shared\Models\Field\CellModel.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\FieldSize.cs.meta">
+        <Link>TicTacToe.Shared\Models\Field\FieldSize.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs.meta">
+        <Link>TicTacToe.Shared\Models\Field\ICheckableField.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ISettableField.cs.meta">
+        <Link>TicTacToe.Shared\Models\Field\ISettableField.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs.meta">
+        <Link>TicTacToe.Shared\Models\Field\Symbols.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User.meta">
+        <Link>TicTacToe.Shared\Models\User.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User\RoomSize.cs.meta">
+        <Link>TicTacToe.Shared\Models\User\RoomSize.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User\UserModel.cs.meta">
+        <Link>TicTacToe.Shared\Models\User\UserModel.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\BaseRequest.cs.meta">
+        <Link>TicTacToe.Shared\Transport\BaseRequest.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\BaseResponse.cs.meta">
+        <Link>TicTacToe.Shared\Transport\BaseResponse.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs.meta">
+        <Link>TicTacToe.Shared\Transport\Paths.cs.meta</Link>
+      </Content>
+    </ItemGroup>
+
 </Project>
