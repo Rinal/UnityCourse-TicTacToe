@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TicTacToe.Server;
+using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -35,13 +36,20 @@ namespace TicTacToe.Client
         {
             if (delta.TryGetValue(nameof(UserModel), out JToken token))
             {
-                Debug.Log($"{nameof(ClientUsersState)}: got model changes {token}.");
+                Debug.Log($"{nameof(ClientUsersState)}: got players changes {token}.");
                 List<UserModel> users = JsonConvert.DeserializeObject<List<UserModel>>(token.ToString());
                 m_users.Clear();
                 foreach (UserModel model in users)
                 {
                     m_users.Add(model);
                 }
+            }
+
+            if (delta.TryGetValue(nameof(ActiveUserChangedEvent), out token))
+            {
+                Debug.Log($"{nameof(ClientUsersState)}: got active changes {token}.");
+                ActiveUserChangedEvent e = JsonConvert.DeserializeObject<ActiveUserChangedEvent>(token.ToString());
+                m_activeUserId.Value = e.Id;
             }
         }
 

@@ -7,6 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\ActiveUserChangedEvent.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\ActiveUserChangedEvent.cs</Link>
+      </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs">
         <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs</Link>
       </Compile>
@@ -83,42 +86,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events.meta">
-        <Link>TicTacToe.Shared\HubApi\Events.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Join.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Select.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs.meta">
-        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs.meta</Link>
-      </Content>
       <Content Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field.meta">
         <Link>TicTacToe.Shared\Models\Field.meta</Link>
       </Content>

@@ -7,21 +7,22 @@ namespace TicTacToe.Server.Tests
     public sealed class GameFieldAnalysisTests
     {
         private GameFieldAnalysis m_analysis = default;
+
         [SetUp]
         public void Initialize()
         {
             m_analysis = new GameFieldAnalysis();
-
         }
 
         [Test]
         public void NoWinOne()
         {
-            CellModel[,] field = {
-                { null, null, null },
-                { null, null, null } ,
-                { null, null, null } };
-
+            CellModel[,] field =
+            {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsFalse(win);
         }
@@ -29,11 +30,12 @@ namespace TicTacToe.Server.Tests
         [Test]
         public void NoWinTwo()
         {
-            CellModel[,] field = {
-                { new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.O) },
-                { null, new CellModel(Symbols.X), null } ,
-                { new CellModel(Symbols.O), null, new CellModel(Symbols.O) } };
-
+            CellModel[,] field =
+            {
+                {new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.O)},
+                {null, new CellModel(Symbols.X), null},
+                {new CellModel(Symbols.O), null, new CellModel(Symbols.O)}
+            };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsFalse(win);
         }
@@ -41,10 +43,12 @@ namespace TicTacToe.Server.Tests
         [Test]
         public void HorizontalTestOne()
         {
-            CellModel[,] field = {
-                { new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X) },
-                { new CellModel(Symbols.O), new CellModel(Symbols.O), null},
-                { new CellModel(Symbols.O), null, null} };
+            CellModel[,] field =
+            {
+                {new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X)},
+                {new CellModel(Symbols.O), new CellModel(Symbols.O), null},
+                {new CellModel(Symbols.O), null, null}
+            };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsTrue(win);
         }
@@ -52,10 +56,12 @@ namespace TicTacToe.Server.Tests
         [Test]
         public void HorizontalTestTwo()
         {
-            CellModel[,] field = {
-                { null, null, null},
-                { new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X) },
-                { null, null, null} };
+            CellModel[,] field =
+            {
+                {null, null, null},
+                {new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X)},
+                {null, null, null}
+            };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsTrue(win);
         }
@@ -63,11 +69,12 @@ namespace TicTacToe.Server.Tests
         [Test]
         public void HorizontalTestThree()
         {
-            CellModel[,] field = {
-                { null, null, null},
-                { null, null, null} ,
-                { new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X) }
-               };
+            CellModel[,] field =
+            {
+                {null, null, null},
+                {null, null, null},
+                {new CellModel(Symbols.X), new CellModel(Symbols.X), new CellModel(Symbols.X)}
+            };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsTrue(win);
         }
@@ -75,10 +82,11 @@ namespace TicTacToe.Server.Tests
         [Test]
         public void DiagonalTestOne()
         {
-            CellModel[,] field = {
-                { new CellModel(Symbols.X), null, null},
-                { null, new CellModel(Symbols.X), null} ,
-                { new CellModel(Symbols.O), new CellModel(Symbols.X), new CellModel(Symbols.X) }
+            CellModel[,] field =
+            {
+                {new CellModel(Symbols.X), null, null},
+                {null, new CellModel(Symbols.X), null},
+                {new CellModel(Symbols.O), new CellModel(Symbols.X), new CellModel(Symbols.X)}
             };
             bool win = m_analysis.WinnerDefiner(field, out _);
             Assert.IsTrue(win);

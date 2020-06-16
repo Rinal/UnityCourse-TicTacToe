@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Innovecs.DialoguesSystem;
+using TicTacToe.Server;
 using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
@@ -79,14 +81,22 @@ namespace TicTacToe.Client
 
         [Inject] private ISettableField m_settableField = default;
         [Inject] private ICheckableField m_checkableField = default;
+        [Inject] private IUserIdObservable m_userIdObservable = default;
+        [Inject] private ClientUsersState m_clientUsersState = default;
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
             Vector3Int cell = m_grid.WorldToCell(eventData.pointerCurrentRaycast.worldPosition);
             if (m_checkableField.IsEmpty(cell.x, cell.y))
             {
-                //TODO Tem hardcoded!
-                m_settableField.Set(Symbols.X, cell.x, cell.y);
+                UserModel me = m_clientUsersState.Users.FirstOrDefault(u => u.Id.Equals(m_userIdObservable.Id.Value));
+                if (me == null)
+                {
+                    Debug.LogError($"{nameof(FieldPresenter)}: failed to find my user!");
+                    return;
+                }
+
+                m_settableField.Set(me.Symbol, cell.x, cell.y);
             }
             else
             {

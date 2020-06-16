@@ -20,5 +20,12 @@ namespace TicTacToe.Server
             delta[nameof(FieldChangedEvent)] = JsonConvert.SerializeObject(fieldChangedEvent);
             return delta.ToString();
         }
+
+        public static string ToEvent(this ActiveUserChangedEvent activeUserChangedEvent)
+        {
+            JObject delta = new JObject();
+            delta[nameof(ActiveUserChangedEvent)] = JsonConvert.SerializeObject(activeUserChangedEvent);
+            return delta.ToString();
+        }
     }
 }

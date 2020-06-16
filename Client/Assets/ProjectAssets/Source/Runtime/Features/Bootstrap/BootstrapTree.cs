@@ -14,6 +14,7 @@ namespace TicTacToe.Client
     {
         private void Start()
         {
+            Application.runInBackground = true;
             Debug.Log($"{nameof(BootstrapTree)}: going to start hub connection...");
             StartConnectionAction()
                 .ContinueWith(JoinAction())

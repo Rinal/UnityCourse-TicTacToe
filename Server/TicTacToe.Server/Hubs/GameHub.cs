@@ -67,6 +67,13 @@ namespace TicTacToe.Server
             );
             m_usersState.Add(user);
             await Clients.All.OnStateChanged(m_users.ToEvent());
+            UserModel second = m_users.ElementAtOrDefault(1);
+            if (second != null)
+            {
+                m_activeUserState.Set(second.Id);
+                await Clients.All.OnStateChanged(new ActiveUserChangedEvent(m_activeUserState.Current).ToEvent());
+            }
+
             return new JoinOperationResponse().ToJson();
         }
 
@@ -80,16 +87,30 @@ namespace TicTacToe.Server
             }
 
             //TODO Check if user is active!
-            UserModel user = m_usersState[Context.ConnectionId];
-            if (user.Symbol != request.Symbol)
+            UserModel currentUser = m_usersState[Context.ConnectionId];
+            if (!currentUser.Id.Equals(m_activeUserState.Current))
             {
-                return new SelectOperationResponse($"Invalid symbol for user!").ToJson();
+                return new SelectOperationResponse($"Failed! User {currentUser.Id} active!").ToJson();
             }
 
+            if (currentUser.Symbol != request.Symbol)
+            {
+                return new SelectOperationResponse($"Invalid symbol for user {currentUser.Id}!").ToJson();
+            }
+
+            //Changing the game field
             m_settableField.Set(request.Symbol, request.X, request.Y);
             await Clients.All.OnStateChanged(new FieldChangedEvent(request.Symbol, request.X, request.Y).ToEvent());
 
-            // await 
+            //Changing the active user
+            UserModel otherUser = m_users.FirstOrDefault(u => !u.Id.Equals(currentUser.Id));
+            if (otherUser == null)
+            {
+                return new SelectOperationResponse("Failed to find other user!").ToJson();
+            }
+
+            m_activeUserState.Set(otherUser.Id);
+            await Clients.All.OnStateChanged(new ActiveUserChangedEvent(m_activeUserState.Current).ToEvent());
             return new SelectOperationResponse().ToJson();
         }
     }

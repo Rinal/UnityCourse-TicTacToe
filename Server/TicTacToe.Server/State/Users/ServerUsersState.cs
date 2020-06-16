@@ -53,7 +53,7 @@ namespace TicTacToe.Server
             return GetEnumerator();
         }
 
-        public string Current => string.Empty;
+        public string Current => m_activeUser;
 
         public void Set(string id)
         {
