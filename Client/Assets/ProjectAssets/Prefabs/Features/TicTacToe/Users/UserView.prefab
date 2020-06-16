@@ -94,7 +94,7 @@ MonoBehaviour:
       m_Calls: []
   m_content: {fileID: 172616465813091384}
   m_nameText: {fileID: 4877248282917261445}
-  m_symbolPresenter: {fileID: 6306444387428043420}
+  m_symbolPresenter: {fileID: 4195002706503230892}
 --- !u!1 &4877248282917261443
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,15 +396,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 181318008727715359}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6306444387428043420 stripped
+--- !u!114 &4195002706503230892 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6125130811428516995, guid: 6c7e65ecd3f0b473facebd1ea3b6e6ad,
+  m_CorrespondingSourceObject: {fileID: 4085767036363725747, guid: 6c7e65ecd3f0b473facebd1ea3b6e6ad,
     type: 3}
   m_PrefabInstance: {fileID: 181318008727715359}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3652ad3a9ca64d38bb54c882022d9a2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 60c80522ca1843d8a5026a3d09e03c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
