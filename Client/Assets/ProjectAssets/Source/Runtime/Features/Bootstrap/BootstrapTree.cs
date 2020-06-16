@@ -12,34 +12,17 @@ namespace TicTacToe.Client
 {
     public sealed class BootstrapTree : MonoBehaviour
     {
-        private IHubConnection m_hubConnection = default;
-        [Inject] private IStateChangedObservable m_stateChangedObservable = default;
-        [Inject] private IJoinOperation m_joinOperation = default;
-        [Inject] private ISelectOperation m_selectOperation = default;
-
-        [Inject]
-        private void Construct(IHubConnection hubConnection)
-        {
-            m_hubConnection = hubConnection;
-        }
-
         private void Start()
         {
             Debug.Log($"{nameof(BootstrapTree)}: going to start hub connection...");
             StartConnectionAction()
-                .ContinueWith(_ =>
-                {
-                    Debug.Log($"{nameof(BootstrapTree)}: the connection was open!");
-                    return Observable.ReturnUnit();
-                })
                 .ContinueWith(JoinAction())
                 .ContinueWith(LoadGameAction())
                 .Subscribe();
-            //---- ===== ----//
-            m_stateChangedObservable
-                .OnStateChanged()
-                .Subscribe(_ => { Debug.LogError($"STATE CHANGED {_.ToString()}"); });
         }
+
+        //Action 1
+        [Inject] private IHubConnection m_hubConnection = default;
 
         private IObservable<Unit> StartConnectionAction()
         {
@@ -49,13 +32,21 @@ namespace TicTacToe.Client
                 {
                     Debug.LogException(ex);
                     return Observable.Never(Unit.Default);
+                })
+                .ContinueWith(_ =>
+                {
+                    Debug.Log($"{nameof(BootstrapTree)}: the connection was open!");
+                    return Observable.ReturnUnit();
                 });
         }
+
+        //Action 2
+        [Inject] private IJoinOperation m_joinOperation = default;
 
         private IObservable<Unit> JoinAction()
         {
             return m_joinOperation
-                .Join(new JoinOperationRequest("Stas " + Random.Range(0, 100).ToString()).ToJson())
+                .Join(new JoinOperationRequest($"Player_{Random.Range(0, 100)}").ToJson())
                 .ToObservable()
                 .Catch<string, Exception>(ex =>
                 {
@@ -76,6 +67,7 @@ namespace TicTacToe.Client
                 });
         }
 
+        //Action 3
         private IObservable<Unit> LoadGameAction()
         {
             return SceneManager
@@ -83,24 +75,6 @@ namespace TicTacToe.Client
                 .ToUniTask()
                 .ToObservable()
                 .ContinueWith(_ => Observable.ReturnUnit());
-        }
-
-        [ContextMenu("Select")]
-        private void SelectOperation()
-        {
-            m_selectOperation
-                .Select(new SelectOperationRequest(1, 1).ToJson())
-                .ToObservable()
-                .Catch<string, Exception>(ex =>
-                {
-                    Debug.LogException(ex);
-                    return Observable.Never<string>();
-                })
-                .Subscribe(jsonResponse =>
-                {
-                    SelectOperationResponse response = JsonConvert.DeserializeObject<SelectOperationResponse>(jsonResponse);
-                    Debug.LogError(" Response ! " + response.Error);
-                });
         }
     }
 }
