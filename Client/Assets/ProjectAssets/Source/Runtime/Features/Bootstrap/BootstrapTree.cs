@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
@@ -19,42 +20,81 @@ namespace TicTacToe.Client
         private void Start()
         {
             Debug.Log($"{nameof(BootstrapTree)}: going to start hub connection...");
-            m_hubConnection
+            StartConnectionAction()
+                .ContinueWith(_ =>
+                {
+                    Debug.Log($"{nameof(BootstrapTree)}: the connection was open!");
+                    return Observable.ReturnUnit();
+                })
+                .ContinueWith(JoinAction())
+                .Subscribe();
+            m_fieldChangedEventsObservable
+                .OnStateChanged()
+                .Subscribe(_ => { Debug.LogError($"STATE CHANGED {_.ToString()}"); });
+        }
+
+        [Inject] private IFieldChangedEventsObservable m_fieldChangedEventsObservable = default;
+        [Inject] private IJoinOperation m_joinOperation = default;
+
+        private IObservable<Unit> StartConnectionAction()
+        {
+            return m_hubConnection
                 .Start()
                 .Catch<Unit, Exception>(ex =>
                 {
                     Debug.LogException(ex);
-                    return Observable.Never<Unit>();
-                })
-                .Subscribe(_ => { Debug.Log($"{nameof(BootstrapTree)}: the connection was open!"); });
-
-
-
-            m_fieldChangedEventsObservable
-                .OnFieldChanged()
-                .Subscribe(_ =>
-                {
-                    Debug.LogError(" This is a field!");
+                    return Observable.Never(Unit.Default);
                 });
-
         }
 
-        [Inject] private IFieldChangedEventsObservable m_fieldChangedEventsObservable = default;
-        
-        [Inject] private IJoinOperation m_joinOperation = default;
-
-        [ContextMenu("Foo1")]
-        private void Test1Operation()
+        private IObservable<Unit> JoinAction()
         {
-            m_joinOperation
-                .Join("tee")
+            return m_joinOperation
+                .Join(new JoinOperationRequest("Stas").ToJson())
                 .ToObservable()
-                .Catch<Unit, Exception>(ex =>
+                .Catch<string, Exception>(ex =>
                 {
                     Debug.LogException(ex);
-                    return Observable.Never<Unit>();
+                    return Observable.Never<string>();
                 })
-                .Subscribe();
+                .ContinueWith(json =>
+                {
+                    JoinOperationResponse response = JsonConvert.DeserializeObject<JoinOperationResponse>(json);
+                    if (string.IsNullOrEmpty(response.Error))
+                    {
+                        Debug.Log($"{nameof(BootstrapTree)}: User joined to the room!");
+                        return Observable.ReturnUnit();
+                    }
+
+                    Debug.LogError($"{nameof(BootstrapTree)}: join failed {response.Error}.");
+                    return Observable.Never(Unit.Default);
+                });
+        }
+
+        [ContextMenu("Join")]
+        private void Test1Operation()
+        {
+            JoinAction().Subscribe();
+        }
+
+        [Inject] private ISelectOperation m_selectOperation = default;
+
+        [ContextMenu("Select")]
+        private void SelectOperation()
+        {
+            m_selectOperation
+                .Select(new SelectOperationRequest(1, 2).ToJson())
+                .ToObservable()
+                .Catch<string, Exception>(ex =>
+                {
+                    Debug.LogException(ex);
+                    return Observable.Never<string>();
+                })
+                .Subscribe(jsonResponse =>
+                {
+                    SelectOperationResponse response = JsonConvert.DeserializeObject<SelectOperationResponse>(jsonResponse);
+                    Debug.LogError(" Response ! " + response.Error);
+                });
         }
     }
 }

@@ -7,14 +7,29 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEventData.cs">
-        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEventData.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs</Link>
       </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs">
-        <Link>TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs</Link>
       </Compile>
-      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs">
-        <Link>TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs</Link>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Step\ISelectOperation.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs">
+        <Link>TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs</Link>
       </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\FieldSize.cs">
         <Link>TicTacToe.Shared\Models\Field\FieldSize.cs</Link>
@@ -32,6 +47,18 @@
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs">
         <Link>TicTacToe.Shared\Models\Field\Symbols.cs</Link>
       </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User\RoomSize.cs">
+        <Link>TicTacToe.Shared\Models\User\RoomSize.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User\UserModel.cs">
+        <Link>TicTacToe.Shared\Models\User\UserModel.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\BaseRequest.cs">
+        <Link>TicTacToe.Shared\Transport\BaseRequest.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\BaseResponse.cs">
+        <Link>TicTacToe.Shared\Transport\BaseResponse.cs</Link>
+      </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs">
         <Link>TicTacToe.Shared\Transport\Paths.cs</Link>
       </Compile>
@@ -47,12 +74,6 @@
 
     <ItemGroup>
       <None Remove="obj\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\User">
-        <Link>TicTacToe.Shared\Models\User</Link>
-      </Folder>
     </ItemGroup>
 
 </Project>

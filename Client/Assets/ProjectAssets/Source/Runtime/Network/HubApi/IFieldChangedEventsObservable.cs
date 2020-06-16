@@ -1,10 +1,10 @@
 using System;
-using TicTacToe.Shared;
+using Newtonsoft.Json.Linq;
 
 namespace TicTacToe.Client
 {
     public interface IFieldChangedEventsObservable
     {
-        IObservable<FieldChangedEventData> OnFieldChanged();
+        IObservable<JObject> OnStateChanged();
     }
 }

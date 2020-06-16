@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,11 @@ namespace TicTacToe.Server
         {
             services.AddControllers();
             services.AddSignalR();
-            services.AddMvc().AddNewtonsoftJson();
+            services.AddMvc();
+            services.AddSingleton<ServerUsersState>();
+            services.AddSingleton<IUsersState>(p => p.GetService<ServerUsersState>());
+            services.AddSingleton<IActiveUserState>(p => p.GetService<ServerUsersState>());
+            services.AddSingleton<IEnumerable<UserModel>>(p => p.GetService<ServerUsersState>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

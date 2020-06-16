@@ -2,25 +2,30 @@ using Newtonsoft.Json;
 
 namespace TicTacToe.Shared
 {
-    public sealed class FieldChangedEventData
+    public sealed class FieldChangedEvent
     {
         [JsonProperty]
-        public SymbolModel Symbol { get; set; }
+        public Symbols Symbol { get; set; }
         [JsonProperty]
         public int X { get; set; }
         [JsonProperty]
         public int Y { get; set; }
 
         [JsonConstructor]
-        private FieldChangedEventData()
+        private FieldChangedEvent()
         {
         }
 
-        public FieldChangedEventData(SymbolModel symbol, int x, int y)
+        public FieldChangedEvent(Symbols symbol, int x, int y)
         {
             Symbol = symbol;
             X = x;
             Y = y;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(FieldChangedEvent)}: {Symbol} ({X},{Y})";
         }
     }
 }

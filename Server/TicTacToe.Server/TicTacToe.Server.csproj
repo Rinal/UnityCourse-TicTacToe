@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="obj\**" />
     </ItemGroup>
 

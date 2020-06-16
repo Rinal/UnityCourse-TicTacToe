@@ -4,6 +4,6 @@ namespace TicTacToe.Shared
 {
     public interface IJoinOperation
     {
-        Task Join(string json);
+        Task<string> Join(string json);
     }
 }

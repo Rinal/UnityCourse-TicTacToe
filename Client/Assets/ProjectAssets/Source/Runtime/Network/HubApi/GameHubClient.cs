@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
+using Newtonsoft.Json.Linq;
 using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
@@ -10,7 +11,9 @@ namespace TicTacToe.Client
 {
     public sealed class GameHubClient : IHubConnection
         , IJoinOperation
+        , ISelectOperation
         , IFieldChangedEventsObservable
+        , IDisposable
     {
         private readonly HubConnection m_connection = default;
         private readonly string m_uri = default;
@@ -65,28 +68,38 @@ namespace TicTacToe.Client
             return m_stopConnectionProcess;
         }
 
-        public async Task Join(string json)
+        public async Task<string> Join(string json)
         {
-            await m_connection.InvokeAsync(nameof(IJoinOperation.Join), json);
+            return await m_connection.InvokeAsync<string>(nameof(IJoinOperation.Join), json);
         }
 
-        private Subject<FieldChangedEventData> m_hubEvent = default;
+        public async Task<string> Select(string json)
+        {
+            return await m_connection.InvokeAsync<string>(nameof(ISelectOperation.Select), json);
+        }
 
-        public IObservable<FieldChangedEventData> OnFieldChanged()
+        private Subject<JObject> m_hubEvent = default;
+
+        public IObservable<JObject> OnStateChanged()
         {
             if (m_hubEvent == null)
             {
-                m_hubEvent = new Subject<FieldChangedEventData>();
+                m_hubEvent = new Subject<JObject>();
                 m_connection
-                    .On<string>(nameof(IFieldChangedEvent.OnFieldChanged), json =>
+                    .On<string>(nameof(IStateChangedListener.OnStateChanged), json =>
                     {
                         Debug.Log($"{nameof(GameHubClient)}: got event with data {json}");
-                        // JObject jo = JObject.Parse(json);
-                        // m_hubEvent.OnNext(jo);
+                        JObject jo = JObject.Parse(json);
+                        m_hubEvent.OnNext(jo);
                     });
             }
 
             return m_hubEvent;
+        }
+
+        public void Dispose()
+        {
+            Stop().Subscribe();
         }
     }
 }

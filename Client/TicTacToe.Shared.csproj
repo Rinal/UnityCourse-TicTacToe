@@ -58,14 +58,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEventData.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Events\IFieldChangedEvent.cs" />
-     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\IJoinOperation.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\IJoinOperation.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationRequest.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Join\JoinOperationResponse.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\ISelectOperation.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationRequest.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\HubApi\Operations\Select\SelectOperationResponse.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\FieldSize.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\ISettableField.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\SymbolModel.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\User\RoomSize.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Models\User\UserModel.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\BaseRequest.cs" />
+     <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\BaseResponse.cs" />
      <Compile Include="Assets\Plugins\TicTacToe.Shared\Transport\Paths.cs" />
      <None Include="Assets\Plugins\TicTacToe.Shared\TicTacToe.Shared.asmdef" />
  <Reference Include="UnityEditor.UI">
