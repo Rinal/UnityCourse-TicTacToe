@@ -4,10 +4,12 @@ using TicTacToe.Shared;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
 
 namespace TicTacToe.Client
 {
     public sealed class FieldPresenter : BaseReferencePresenter<ClientFieldState>
+        , IPointerClickHandler
     {
         [SerializeField] private CellPresenter m_prefab = default;
         [SerializeField] private Grid m_grid = default;
@@ -46,17 +48,27 @@ namespace TicTacToe.Client
 
         private void CreatePresenters()
         {
+            Vector3 halfSize = m_grid.cellSize * 0.5f;
             for (int i = 0; i < FieldSize.Value; i++)
             {
                 for (int j = 0; j < FieldSize.Value; j++)
                 {
                     Vector3 position = m_grid.CellToLocal(new Vector3Int(i, j, 0));
                     CellPresenter presenter = Instantiate(m_prefab, m_grid.transform, true);
-                    presenter.transform.localPosition = position;
-                    presenter.Hide();
+
+                    // presenter.transform.localPosition = position;
+                    presenter.transform.localPosition = new Vector3(position.x + halfSize.x, position.y + halfSize.y);
+                    // presenter.Hide();
+                    presenter.Show(null);
                     m_presenters.Add(new Vector2Int(i, j), presenter);
                 }
             }
+        }
+
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {
+            Debug.LogError("Click! " + m_grid.WorldToCell(eventData.pointerCurrentRaycast.worldPosition));
+            // Debug.LogError("Click! " + m_grid.LocalToCell(eventData.position));
         }
     }
 }
