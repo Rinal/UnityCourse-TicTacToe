@@ -40,10 +40,10 @@
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ICheckableField.cs">
         <Link>TicTacToe.Shared\Models\Field\ICheckableField.cs</Link>
       </Compile>
+      <Compile Remove="obj\**" />
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\ISettableField.cs">
         <Link>TicTacToe.Shared\Models\Field\ISettableField.cs</Link>
       </Compile>
-      <Compile Remove="obj\**" />
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\Models\Field\Symbols.cs">
         <Link>TicTacToe.Shared\Models\Field\Symbols.cs</Link>
       </Compile>

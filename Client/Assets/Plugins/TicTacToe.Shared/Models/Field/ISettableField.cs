@@ -2,6 +2,6 @@ namespace TicTacToe.Shared
 {
     public interface ISettableField
     {
-        void Set(CellModel model, int x, int y);
+        void Set(Symbols symbol, int x, int y);
     }
 }

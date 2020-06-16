@@ -22,6 +22,10 @@ namespace TicTacToe.Client
             {
                 m_sprite.color = Color.red;
             }
+            else
+            {
+                m_sprite.color = Color.green;
+            }
         }
 
         public override void Hide()

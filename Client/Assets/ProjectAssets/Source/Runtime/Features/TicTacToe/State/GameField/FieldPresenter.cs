@@ -5,6 +5,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
+using Zenject;
 
 namespace TicTacToe.Client
 {
@@ -76,10 +77,23 @@ namespace TicTacToe.Client
             }
         }
 
+        [Inject] private ISettableField m_settableField = default;
+        [Inject] private ICheckableField m_checkableField = default;
+
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            Debug.LogError("Click! " + m_grid.WorldToCell(eventData.pointerCurrentRaycast.worldPosition));
-            // Debug.LogError("Click! " + m_grid.LocalToCell(eventData.position));
+            Vector3Int cell = m_grid.WorldToCell(eventData.pointerCurrentRaycast.worldPosition);
+            if (m_checkableField.IsEmpty(cell.x, cell.y))
+            {
+                //TODO Tem hardcoded!
+                m_settableField.Set(Symbols.X, cell.x, cell.y);
+            }
+            else
+            {
+                Debug.Log($"{nameof(FieldPresenter)}: {cell} is not empty!");
+            }
+
+            
         }
     }
 }

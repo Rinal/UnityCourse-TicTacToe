@@ -17,17 +17,23 @@ namespace TicTacToe.Server
         private readonly IUsersState m_usersState = default;
         private readonly IActiveUserState m_activeUserState = default;
         private readonly IEnumerable<UserModel> m_users = default;
+        private readonly ICheckableField m_checkableField = default;
+        private readonly ISettableField m_settableField = default;
 
         public GameHub(
             ILogger<GameHub> logger,
             IUsersState usersState,
             IActiveUserState activeUserState,
-            IEnumerable<UserModel> users)
+            IEnumerable<UserModel> users,
+            ICheckableField checkableField,
+            ISettableField settableField)
         {
             m_logger = logger;
             m_usersState = usersState;
             m_activeUserState = activeUserState;
             m_users = users;
+            m_checkableField = checkableField;
+            m_settableField = settableField;
         }
 
         public override async Task OnConnectedAsync()
@@ -68,14 +74,21 @@ namespace TicTacToe.Server
         {
             SelectOperationRequest request = JsonConvert.DeserializeObject<SelectOperationRequest>(json);
             m_logger.LogInformation($"User {Context.ConnectionId} going to select {request}");
-            // throw new HubException(" Thi is wrong turn!");
-            await Task.CompletedTask;
-            // throw new Exception("No!");
-            // await Task.CompletedTask; // FromException(new HubException("NO NO"));
-            // return Task.FromException(new Exception("")).Exception.ToString();
-            return new SelectOperationResponse().ToJson();
+            if (!m_checkableField.IsEmpty(request.X, request.Y))
+            {
+                return new SelectOperationResponse($"Invalid values! Filed is not empty at ({request.X},{request.Y})").ToJson();
+            }
 
-            // return "This is something new!";
+            //TODO Check if user is active!
+            UserModel user = m_usersState[Context.ConnectionId];
+            if (user.Symbol != request.Symbol)
+            {
+                return new SelectOperationResponse($"Invalid symbol for user!").ToJson();
+            }
+
+            m_settableField.Set(request.Symbol, request.X, request.Y);
+            await Clients.All.OnStateChanged(new FieldChangedEvent(request.Symbol, request.X, request.Y).ToEvent());
+            return new SelectOperationResponse().ToJson();
         }
     }
 }
