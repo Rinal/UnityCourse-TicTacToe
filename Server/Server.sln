@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Server", "TicTacToe.Server\TicTacToe.Server.csproj", "{DEAA7E88-BF56-4334-8ABD-3285F3B439E8}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Server", "TicTacToe.Server\TicTacToe.Server.csproj", "{DEAA7E88-BF56-4334-8ABD-3285F3B439E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Shared", "TicTacToe.Shared\TicTacToe.Shared.csproj", "{79D8BC07-C096-406A-BFDA-E315812F71E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe.Shared", "TicTacToe.Shared\TicTacToe.Shared.csproj", "{79D8BC07-C096-406A-BFDA-E315812F71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Server.Tests", "TicTacToe.Server.Tests\TicTacToe.Server.Tests.csproj", "{98E12933-40B6-4D1C-B2A5-1433BD3889F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{79D8BC07-C096-406A-BFDA-E315812F71E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D8BC07-C096-406A-BFDA-E315812F71E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79D8BC07-C096-406A-BFDA-E315812F71E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E12933-40B6-4D1C-B2A5-1433BD3889F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E12933-40B6-4D1C-B2A5-1433BD3889F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E12933-40B6-4D1C-B2A5-1433BD3889F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E12933-40B6-4D1C-B2A5-1433BD3889F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8826F883-B7BA-4FD1-89E9-A061C03A271B}
 	EndGlobalSection
 EndGlobal
