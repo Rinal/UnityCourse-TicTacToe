@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectAssets/Scenes/Bootstrap.unity
     guid: e8ddc24379f9f4e5f84dc185341ebe8e
+  - enabled: 1
+    path: Assets/ProjectAssets/Scenes/TicTacToe.unity
+    guid: 1581d44d41ef14fdbb7ca779fabfb5f4
   m_configObjects: {}

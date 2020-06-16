@@ -1,32 +1,30 @@
 using Innovecs.DialoguesSystem;
 using TicTacToe.Shared;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace TicTacToe.Client
 {
-    public sealed class SymbolPresenter : BaseReferencePresenter<SymbolModel>
+    public sealed class SymbolPresenter : BaseValuePresenter<Symbols>
     {
-        [SerializeField] private SpriteRenderer m_sprite = default;
+        [SerializeField] private TextMeshProUGUI m_symbolText = default;
 
         private void Awake()
         {
-            Assert.IsNotNull(m_sprite);
+            Assert.IsNotNull(m_symbolText);
         }
 
-        public override void Show(SymbolModel target)
+        public override void Show(Symbols target)
         {
             base.Show(target);
-            m_sprite.gameObject.SetActive(true);
-            if (target == null)
-            {
-                m_sprite.color = Color.red;
-            }
+            m_symbolText.text = Target.ToString();
+            m_symbolText.gameObject.SetActive(true);
         }
 
         public override void Hide()
         {
-            m_sprite.gameObject.SetActive(false);
+            m_symbolText.gameObject.SetActive(false);
             base.Hide();
         }
     }

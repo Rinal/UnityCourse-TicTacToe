@@ -7,11 +7,11 @@ using UnityEngine.Assertions;
 
 namespace TicTacToe.Client
 {
-    public sealed class FieldPresenter : BaseReferencePresenter<ClientFieldModel>
+    public sealed class FieldPresenter : BaseReferencePresenter<ClientFieldState>
     {
-        [SerializeField] private SymbolPresenter m_prefab = default;
+        [SerializeField] private CellPresenter m_prefab = default;
         [SerializeField] private Grid m_grid = default;
-        private readonly Dictionary<Vector2Int, SymbolPresenter> m_presenters = new Dictionary<Vector2Int, SymbolPresenter>(FieldSize.Value * FieldSize.Value);
+        private readonly Dictionary<Vector2Int, CellPresenter> m_presenters = new Dictionary<Vector2Int, CellPresenter>(FieldSize.Value * FieldSize.Value);
         private readonly CompositeDisposable m_subscriptions = new CompositeDisposable();
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace TicTacToe.Client
             m_subscriptions.Dispose();
         }
 
-        public override void Show(ClientFieldModel target)
+        public override void Show(ClientFieldState target)
         {
             m_subscriptions.Clear();
             base.Show(target);
@@ -51,7 +51,7 @@ namespace TicTacToe.Client
                 for (int j = 0; j < FieldSize.Value; j++)
                 {
                     Vector3 position = m_grid.CellToLocal(new Vector3Int(i, j, 0));
-                    SymbolPresenter presenter = Instantiate(m_prefab, m_grid.transform, true);
+                    CellPresenter presenter = Instantiate(m_prefab, m_grid.transform, true);
                     presenter.transform.localPosition = position;
                     presenter.Hide();
                     m_presenters.Add(new Vector2Int(i, j), presenter);

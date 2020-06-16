@@ -12,13 +12,17 @@ namespace TicTacToe.Client
     public sealed class GameHubClient : IHubConnection
         , IJoinOperation
         , ISelectOperation
-        , IFieldChangedEventsObservable
+        , IStateChangedObservable
+        , IUserIdObservable
         , IDisposable
     {
         private readonly HubConnection m_connection = default;
         private readonly string m_uri = default;
         private IObservable<Unit> m_startConnectionProcess = default;
         private IObservable<Unit> m_stopConnectionProcess = default;
+
+        private readonly ReactiveProperty<string> m_id = new ReactiveProperty<string>(string.Empty);
+        IReadOnlyReactiveProperty<string> IUserIdObservable.Id => m_id;
 
         [Inject]
         public GameHubClient(string host)
@@ -42,7 +46,8 @@ namespace TicTacToe.Client
                 .ToObservable()
                 .ContinueWith(_ =>
                 {
-                    Debug.Log($"{nameof(GameHubClient)}: hub connection was open.");
+                    m_id.Value = m_connection.ConnectionId;
+                    Debug.Log($"{nameof(GameHubClient)}: hub connection was open. User id {m_id.Value}");
                     m_startConnectionProcess = null;
                     return Observable.ReturnUnit();
                 });
@@ -61,6 +66,7 @@ namespace TicTacToe.Client
                 .ToObservable()
                 .ContinueWith(_ =>
                 {
+                    m_id.Value = string.Empty;
                     Debug.Log($"{nameof(GameHubClient)}: hub connection was closed.");
                     m_stopConnectionProcess = null;
                     return Observable.ReturnUnit();

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using TicTacToe.Shared;
 
 namespace TicTacToe.Server
@@ -41,7 +40,7 @@ namespace TicTacToe.Server
         {
             m_logger.LogInformation($"User disconnected: {nameof(Context.ConnectionId)} = {Context.ConnectionId}, with {exception}");
             m_usersState.Remove(Context.ConnectionId);
-            await base.OnDisconnectedAsync(exception);
+            await Clients.All.OnStateChanged(m_users.ToEvent());
         }
 
         public async Task<string> Join(string json)
@@ -61,12 +60,7 @@ namespace TicTacToe.Server
                 symbol
             );
             m_usersState.Add(user);
-            JObject delta = new JObject();
-            delta[nameof(UserModel)] = JsonConvert.SerializeObject(m_users);
-            m_logger.LogInformation(delta.ToString());
-
-            //TODO Notify all!
-            await Task.CompletedTask;
+            await Clients.All.OnStateChanged(m_users.ToEvent());
             return new JoinOperationResponse().ToJson();
         }
 

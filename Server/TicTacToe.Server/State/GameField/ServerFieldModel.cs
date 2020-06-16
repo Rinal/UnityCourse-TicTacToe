@@ -5,7 +5,7 @@ namespace TicTacToe.Server
 {
     public sealed class ServerFieldModel
     {
-        private readonly SymbolModel[,] m_field = new SymbolModel[FieldSize.Value, FieldSize.Value];
+        private readonly CellModel[,] m_field = new CellModel[FieldSize.Value, FieldSize.Value];
 
         public bool IsEmpty(int x, int y)
         {

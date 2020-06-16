@@ -2,14 +2,20 @@
 using Newtonsoft.Json;
 using TicTacToe.Shared;
 using UniRx;
+using UniRx.Async;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TicTacToe.Client
 {
     public sealed class BootstrapTree : MonoBehaviour
     {
         private IHubConnection m_hubConnection = default;
+        [Inject] private IStateChangedObservable m_stateChangedObservable = default;
+        [Inject] private IJoinOperation m_joinOperation = default;
+        [Inject] private ISelectOperation m_selectOperation = default;
 
         [Inject]
         private void Construct(IHubConnection hubConnection)
@@ -27,14 +33,13 @@ namespace TicTacToe.Client
                     return Observable.ReturnUnit();
                 })
                 .ContinueWith(JoinAction())
+                .ContinueWith(LoadGameAction())
                 .Subscribe();
-            m_fieldChangedEventsObservable
+            //---- ===== ----//
+            m_stateChangedObservable
                 .OnStateChanged()
                 .Subscribe(_ => { Debug.LogError($"STATE CHANGED {_.ToString()}"); });
         }
-
-        [Inject] private IFieldChangedEventsObservable m_fieldChangedEventsObservable = default;
-        [Inject] private IJoinOperation m_joinOperation = default;
 
         private IObservable<Unit> StartConnectionAction()
         {
@@ -50,7 +55,7 @@ namespace TicTacToe.Client
         private IObservable<Unit> JoinAction()
         {
             return m_joinOperation
-                .Join(new JoinOperationRequest("Stas").ToJson())
+                .Join(new JoinOperationRequest("Stas " + Random.Range(0, 100).ToString()).ToJson())
                 .ToObservable()
                 .Catch<string, Exception>(ex =>
                 {
@@ -71,19 +76,20 @@ namespace TicTacToe.Client
                 });
         }
 
-        [ContextMenu("Join")]
-        private void Test1Operation()
+        private IObservable<Unit> LoadGameAction()
         {
-            JoinAction().Subscribe();
+            return SceneManager
+                .LoadSceneAsync("TicTacToe")
+                .ToUniTask()
+                .ToObservable()
+                .ContinueWith(_ => Observable.ReturnUnit());
         }
-
-        [Inject] private ISelectOperation m_selectOperation = default;
 
         [ContextMenu("Select")]
         private void SelectOperation()
         {
             m_selectOperation
-                .Select(new SelectOperationRequest(1, 2).ToJson())
+                .Select(new SelectOperationRequest(1, 1).ToJson())
                 .ToObservable()
                 .Catch<string, Exception>(ex =>
                 {

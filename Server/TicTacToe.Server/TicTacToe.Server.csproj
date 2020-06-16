@@ -26,5 +26,9 @@
       <Content Remove="obj\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="State" />
+    </ItemGroup>
+
 
 </Project>
