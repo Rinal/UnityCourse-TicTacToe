@@ -35,14 +35,28 @@ namespace TicTacToe.Client
             base.Show(target);
             Target
                 .Field
-                .ObserveAdd()
-                .Subscribe(item => { m_presenters[item.Key].Show(item.Value); })
+                .ObserveReplace()
+                .Subscribe(OnCellChanged)
                 .AddTo(m_subscriptions);
+            foreach (KeyValuePair<Vector2Int, CellModel> pair in Target.Field)
+            {
+                OnCellChanged(new DictionaryReplaceEvent<Vector2Int, CellModel>(pair.Key, null, pair.Value));
+            }
+        }
+
+        private void OnCellChanged(DictionaryReplaceEvent<Vector2Int, CellModel> replace)
+        {
+            m_presenters[replace.Key].Show(replace.NewValue);
         }
 
         public override void Hide()
         {
             m_subscriptions.Clear();
+            foreach (CellPresenter presenter in m_presenters.Values)
+            {
+                presenter.Hide();
+            }
+
             base.Hide();
         }
 
@@ -55,11 +69,8 @@ namespace TicTacToe.Client
                 {
                     Vector3 position = m_grid.CellToLocal(new Vector3Int(i, j, 0));
                     CellPresenter presenter = Instantiate(m_prefab, m_grid.transform, true);
-
-                    // presenter.transform.localPosition = position;
                     presenter.transform.localPosition = new Vector3(position.x + halfSize.x, position.y + halfSize.y);
-                    // presenter.Hide();
-                    presenter.Show(null);
+                    presenter.Hide();
                     m_presenters.Add(new Vector2Int(i, j), presenter);
                 }
             }
