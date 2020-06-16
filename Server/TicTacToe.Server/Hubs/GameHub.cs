@@ -88,6 +88,9 @@ namespace TicTacToe.Server
 
             m_settableField.Set(request.Symbol, request.X, request.Y);
             await Clients.All.OnStateChanged(new FieldChangedEvent(request.Symbol, request.X, request.Y).ToEvent());
+            
+            // await 
+            
             return new SelectOperationResponse().ToJson();
         }
     }

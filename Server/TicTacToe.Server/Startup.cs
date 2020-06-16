@@ -27,6 +27,7 @@ namespace TicTacToe.Server
             services.AddSingleton<IUsersState>(p => p.GetService<ServerUsersState>());
             services.AddSingleton<IActiveUserState>(p => p.GetService<ServerUsersState>());
             services.AddSingleton<IEnumerable<UserModel>>(p => p.GetService<ServerUsersState>());
+           
             services.AddSingleton<ServerFieldModel>();
             services.AddSingleton<ICheckableField>(p => p.GetService<ServerFieldModel>());
             services.AddSingleton<ISettableField>(p => p.GetService<ServerFieldModel>());

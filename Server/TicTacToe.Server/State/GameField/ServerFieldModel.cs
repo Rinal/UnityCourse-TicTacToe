@@ -1,14 +1,20 @@
 using System;
-using System.Numerics;
 using TicTacToe.Shared;
 
 namespace TicTacToe.Server
 {
-    public sealed class ServerFieldModel
+    public sealed class ServerFieldModel :
+        ICheckableField
+        , ISettableField
     {
         private readonly CellModel[,] m_field = new CellModel[FieldSize.Value, FieldSize.Value];
 
-        public bool IsEmpty(int x, int y)
+        private bool IsValid(int x, int y)
+        {
+            return x >= 0 && x < FieldSize.Value && y >= 0 && y < FieldSize.Value;
+        }
+
+        bool ICheckableField.IsEmpty(int x, int y)
         {
             if (!IsValid(x, y))
             {
@@ -18,12 +24,16 @@ namespace TicTacToe.Server
             return m_field[x, y] == null;
         }
 
-        private bool IsValid(int x, int y)
+        void ISettableField.Set(Symbols symbol, int x, int y)
         {
-            return x >= 0 && x < FieldSize.Value && y >= 0 && y < FieldSize.Value;
+            if (!IsValid(x, y))
+            {
+                throw new Exception("Invalid field coordinates!");
+            }
+
+            m_field[x, y] = new CellModel(symbol);
         }
     }
-
 
     public sealed class GameFieldAnalysis
     {
@@ -80,6 +90,7 @@ namespace TicTacToe.Server
                                     }
                                 }
                             }
+
                             if (lastCell != null)
                             {
                                 symbol = lastCell.Symbol;
@@ -89,6 +100,7 @@ namespace TicTacToe.Server
                     }
                 }
             }
+
             return false;
         }
     }
