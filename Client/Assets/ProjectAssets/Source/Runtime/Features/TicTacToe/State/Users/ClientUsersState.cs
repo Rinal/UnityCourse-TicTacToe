@@ -9,7 +9,10 @@ using Zenject;
 
 namespace TicTacToe.Client
 {
-    public sealed class ClientUsersState : IInitializable, IDisposable
+    public sealed class ClientUsersState :
+        IInitializable
+        , IActiveUserObservable
+        , IDisposable
     {
         private readonly ReactiveCollection<UserModel> m_users = new ReactiveCollection<UserModel>();
         private readonly IStateChangedObservable m_stateChangedObservable = default;
@@ -47,5 +50,8 @@ namespace TicTacToe.Client
             m_onStateChanged?.Dispose();
             m_onStateChanged = default;
         }
+
+        private readonly ReactiveProperty<string> m_activeUserId = new ReactiveProperty<string>(string.Empty);
+        IReadOnlyReactiveProperty<string> IActiveUserObservable.Id => m_activeUserId;
     }
 }
