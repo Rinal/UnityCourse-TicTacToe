@@ -65,7 +65,7 @@ namespace TicTacToe.Server
             }
 
             JoinOperationRequest request = JsonConvert.DeserializeObject<JoinOperationRequest>(json);
-            Symbols symbol = (Symbols)usersCount;
+            Symbols symbol = (Symbols) usersCount;
             UserModel user = new UserModel(
                 Context.ConnectionId,
                 request.Name,
@@ -117,10 +117,10 @@ namespace TicTacToe.Server
 
             m_activeUserState.Set(otherUser.Id);
             await Clients.All.OnStateChanged(new ActiveUserChangedEvent(m_activeUserState.Current).ToEvent());
-
             if (m_analysis.WinnerDefiner(m_fieldElements.Field, out Symbols? symbol))
             {
-                
+                m_logger.LogInformation($"The game is over. Winner {symbol}");
+                await Clients.All.OnStateChanged(new GameOverEvent(symbol).ToEvent());
             }
 
             return new SelectOperationResponse().ToJson();

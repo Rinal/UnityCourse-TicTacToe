@@ -53,6 +53,14 @@ namespace TicTacToe.Client
                 FieldChangedEvent changed = JsonConvert.DeserializeObject<FieldChangedEvent>(token.ToString());
                 m_field[new Vector2Int(changed.X, changed.Y)] = new CellModel(changed.Symbol);
             }
+            
+            if (delta.TryGetValue(nameof(GameOverEvent), out  token))
+            {
+                Debug.Log($"{nameof(ClientFieldState)}: got game over event {token}.");
+                GameOverEvent gameOver = JsonConvert.DeserializeObject<GameOverEvent>(token.ToString());
+                Debug.LogError($"THE GAME WAS OVER {gameOver.Symbol}");
+            }
+            
         }
 
         void IDisposable.Dispose()

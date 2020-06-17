@@ -13,6 +13,9 @@
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs">
         <Link>TicTacToe.Shared\HubApi\Events\FieldChangedEvent.cs</Link>
       </Compile>
+      <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\GameOverEvent.cs">
+        <Link>TicTacToe.Shared\HubApi\Events\GameOverEvent.cs</Link>
+      </Compile>
       <Compile Include="..\..\Client\Assets\Plugins\TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs">
         <Link>TicTacToe.Shared\HubApi\Events\IStateChangedListener.cs</Link>
       </Compile>
