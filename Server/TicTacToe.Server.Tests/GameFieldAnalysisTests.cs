@@ -6,7 +6,7 @@ namespace TicTacToe.Server.Tests
     [TestFixture]
     public sealed class GameFieldAnalysisTests
     {
-        private GameFieldAnalysis m_analysis = default;
+        private IAnalysis m_analysis = default;
 
         [SetUp]
         public void Initialize()

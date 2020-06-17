@@ -19,6 +19,8 @@ namespace TicTacToe.Server
         private readonly IEnumerable<UserModel> m_users = default;
         private readonly ICheckableField m_checkableField = default;
         private readonly ISettableField m_settableField = default;
+        private readonly IAnalysis m_analysis = default;
+        private readonly IFieldElements m_fieldElements = default;
 
         public GameHub(
             ILogger<GameHub> logger,
@@ -26,7 +28,9 @@ namespace TicTacToe.Server
             IActiveUserState activeUserState,
             IEnumerable<UserModel> users,
             ICheckableField checkableField,
-            ISettableField settableField)
+            ISettableField settableField,
+            IAnalysis analysis,
+            IFieldElements fieldElements)
         {
             m_logger = logger;
             m_usersState = usersState;
@@ -34,6 +38,8 @@ namespace TicTacToe.Server
             m_users = users;
             m_checkableField = checkableField;
             m_settableField = settableField;
+            m_analysis = analysis;
+            m_fieldElements = fieldElements;
         }
 
         public override async Task OnConnectedAsync()
@@ -59,7 +65,7 @@ namespace TicTacToe.Server
             }
 
             JoinOperationRequest request = JsonConvert.DeserializeObject<JoinOperationRequest>(json);
-            Symbols symbol = (Symbols) usersCount;
+            Symbols symbol = (Symbols)usersCount;
             UserModel user = new UserModel(
                 Context.ConnectionId,
                 request.Name,
@@ -111,6 +117,12 @@ namespace TicTacToe.Server
 
             m_activeUserState.Set(otherUser.Id);
             await Clients.All.OnStateChanged(new ActiveUserChangedEvent(m_activeUserState.Current).ToEvent());
+
+            if (m_analysis.WinnerDefiner(m_fieldElements.Field, out Symbols? symbol))
+            {
+                
+            }
+
             return new SelectOperationResponse().ToJson();
         }
     }

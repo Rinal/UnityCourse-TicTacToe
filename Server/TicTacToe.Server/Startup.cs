@@ -31,6 +31,10 @@ namespace TicTacToe.Server
             services.AddSingleton<ServerFieldModel>();
             services.AddSingleton<ICheckableField>(p => p.GetService<ServerFieldModel>());
             services.AddSingleton<ISettableField>(p => p.GetService<ServerFieldModel>());
+            services.AddSingleton<IFieldElements>(p => p.GetService<ServerFieldModel>());
+
+            services.AddSingleton<GameFieldAnalysis>();
+            services.AddSingleton<IAnalysis>(p => p.GetService<GameFieldAnalysis>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
