@@ -119,7 +119,7 @@ namespace TicTacToe.Server
             await Clients.All.OnStateChanged(new ActiveUserChangedEvent(m_activeUserState.Current).ToEvent());
             if (m_analysis.WinnerDefiner(m_fieldElements.Field, out IEnumerable<ValueTuple<int, int>> winPositions))
             {
-                if (winPositions.Any())
+                if (!winPositions.Any())
                 {
                     //draw
                     m_logger.LogInformation($"The game is over. Draw");

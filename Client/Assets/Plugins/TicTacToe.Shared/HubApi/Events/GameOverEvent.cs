@@ -20,6 +20,7 @@ namespace TicTacToe.Shared
         public GameOverEvent(Symbols symbol, IEnumerable<ValueTuple<int, int>> winCellPositions)
         {
             Symbol = symbol;
+            WinCellPositions = winCellPositions;
         }
     }
 }
