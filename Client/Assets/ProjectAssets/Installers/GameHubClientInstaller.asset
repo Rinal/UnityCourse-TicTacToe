@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27622c3597354850a42ba5fba8f3c867, type: 3}
   m_Name: GameHubClientInstaller
   m_EditorClassIdentifier: 
+  m_host: https://localhost:44306

@@ -22,7 +22,7 @@ namespace TicTacToe.Client
             m_sprite.gameObject.SetActive(true);
             if (Target == null)
             {
-                m_sprite.color = Color.red;
+                m_sprite.color = new Color(0, 0, 0, 0);
             }
             else
             {
@@ -32,6 +32,7 @@ namespace TicTacToe.Client
 
         public override void Hide()
         {
+            m_sprite.color = Color.white;
             m_sprite.gameObject.SetActive(false);
             m_symbolPresenter.Hide();
             base.Hide();
