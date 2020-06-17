@@ -323,7 +323,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.078431375, g: 0.7411765, b: 0.6745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -626,12 +626,12 @@ PrefabInstance:
     - target: {fileID: 9146335749122189576, guid: 4f140522f950b44a8a84b7a13662003c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 9146335749122189576, guid: 4f140522f950b44a8a84b7a13662003c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 9146335749122189576, guid: 4f140522f950b44a8a84b7a13662003c,
         type: 3}
@@ -682,6 +682,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FieldView
+      objectReference: {fileID: 0}
+    - target: {fileID: 9146335750192788552, guid: 4f140522f950b44a8a84b7a13662003c,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9146335750192788552, guid: 4f140522f950b44a8a84b7a13662003c,
+        type: 3}
+      propertyPath: m_CellSize.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9146335750192788552, guid: 4f140522f950b44a8a84b7a13662003c,
+        type: 3}
+      propertyPath: m_CellSize.z
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f140522f950b44a8a84b7a13662003c, type: 3}
