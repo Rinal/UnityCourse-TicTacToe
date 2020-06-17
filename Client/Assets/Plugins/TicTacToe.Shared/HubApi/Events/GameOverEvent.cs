@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace TicTacToe.Shared
@@ -7,7 +9,15 @@ namespace TicTacToe.Shared
         [JsonProperty]
         public Symbols? Symbol { get; private set; }
 
-        public GameOverEvent(Symbols? symbol)
+        [JsonProperty]
+        public IEnumerable<ValueTuple<int, int>> WinCellPositions { get; private set; }
+
+
+        public GameOverEvent()
+        {
+            //Draw
+        }
+        public GameOverEvent(Symbols symbol, IEnumerable<ValueTuple<int, int>> winCellPositions)
         {
             Symbol = symbol;
         }

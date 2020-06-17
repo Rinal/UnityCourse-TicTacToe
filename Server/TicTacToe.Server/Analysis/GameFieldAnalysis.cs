@@ -1,8 +1,11 @@
-﻿using TicTacToe.Shared;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TicTacToe.Shared;
 
 namespace TicTacToe.Server
 {
-    public sealed class GameFieldAnalysis: IAnalysis
+    public sealed class GameFieldAnalysis : IAnalysis
     {
         private struct Direction
         {
@@ -26,13 +29,19 @@ namespace TicTacToe.Server
 
         private const uint WinLength = 3;
 
-        bool IAnalysis.WinnerDefiner(CellModel[,] field, out Symbols? symbol)
+        bool IAnalysis.WinnerDefiner(CellModel[,] field, out IEnumerable<ValueTuple<int, int>> winPositions)
         {
-            symbol = null;
+            winPositions = null;
+            List<ValueTuple<int, int>> potentialWinCells = new List<ValueTuple<int, int>>();
+            bool draw = true;
             for (int y = 0; y < FieldSize.Value; y++)
             {
                 for (int x = 0; x < FieldSize.Value; x++)
                 {
+                    if (draw && field[y, x] == null)
+                    {
+                        draw = false;
+                    }
                     foreach (Direction direction in m_winDirections)
                     {
                         if (x + (direction.X * WinLength) <= FieldSize.Value &&
@@ -40,7 +49,9 @@ namespace TicTacToe.Server
                             y + (direction.Y * WinLength) <= FieldSize.Value &&
                             y + (direction.Y * WinLength) >= 0)
                         {
+                            potentialWinCells.Clear();
                             CellModel lastCell = field[y, x];
+                            potentialWinCells.Add((y, x));
                             if (lastCell != null)
                             {
                                 for (int k = 1; k < WinLength; k++)
@@ -54,21 +65,21 @@ namespace TicTacToe.Server
                                     else
                                     {
                                         lastCell = cell;
+                                        potentialWinCells.Add((y + (direction.Y * k), x + (direction.X * k)));
                                     }
                                 }
                             }
 
                             if (lastCell != null)
                             {
-                                symbol = lastCell.Symbol;
+                                winPositions = potentialWinCells;
                                 return true;
                             }
                         }
                     }
                 }
             }
-
-            return false;
+            return draw;
         }
     }
 }

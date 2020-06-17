@@ -58,7 +58,7 @@ namespace TicTacToe.Client
             {
                 Debug.Log($"{nameof(ClientFieldState)}: got game over event {token}.");
                 GameOverEvent gameOver = JsonConvert.DeserializeObject<GameOverEvent>(token.ToString());
-                Debug.LogError($"THE GAME WAS OVER {gameOver.Symbol}");
+                Debug.LogError($"THE GAME WAS OVER {token}");
             }
             
         }
