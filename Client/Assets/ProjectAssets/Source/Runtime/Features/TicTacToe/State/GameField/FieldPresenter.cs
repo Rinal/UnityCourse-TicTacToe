@@ -18,13 +18,16 @@ namespace TicTacToe.Client
     {
         [SerializeField] private CellPresenter m_prefab = default;
         [SerializeField] private Grid m_grid = default;
+        [SerializeField] private LineRenderer m_lineRenderer = default;
         private readonly Dictionary<Vector2Int, CellPresenter> m_presenters = new Dictionary<Vector2Int, CellPresenter>(FieldSize.Value * FieldSize.Value);
         private readonly CompositeDisposable m_subscriptions = new CompositeDisposable();
+
 
         private void Awake()
         {
             Assert.IsNotNull(m_prefab);
             Assert.IsNotNull(m_grid);
+            Assert.IsNotNull(m_lineRenderer);
             CreatePresenters();
         }
 
@@ -50,17 +53,59 @@ namespace TicTacToe.Client
 
             Target
                 .WinCellsPosition
-                .ObserveAdd()
                 .Subscribe(AddWinCells)
                 .AddTo(m_subscriptions);
         }
 
-        private void AddWinCells(CollectionAddEvent<Vector2Int> obj)
+
+        private void AddWinCells(IEnumerable<Vector2Int> positions)
         {
-            Debug.Log("AddWinCells"); //ToDo
-            m_presenters[obj.Value].transform.DOScale(new Vector3(2, 2, 2), 0.5f);
-            m_presenters[obj.Value].transform.DOMove(Vector3.zero, 0.5f);
+            m_lineRenderer.enabled = true;
+            m_lineRenderer.widthMultiplier = 0.1f;
+            m_lineRenderer.positionCount = 2;
+            switch (m_presenters[positions.First()].Target.Symbol)
+            {
+                case Symbols.X:
+                    m_lineRenderer.startColor = new Color(0.33f, 0.33f, 0.33f, 1f);
+                    m_lineRenderer.endColor = new Color(0.33f, 0.33f, 0.33f, 1f);
+                    break;
+                case Symbols.O:
+                    m_lineRenderer.startColor = new Color(0.95f, 0.92f, 0.83f, 1f);
+                    m_lineRenderer.endColor = new Color(0.95f, 0.92f, 0.83f, 1f);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            float duration = 1.25f;
+
+            m_lineRenderer.SetPosition(0, m_presenters[positions.First()].transform.position);
+            m_lineRenderer.SetPosition(1, m_presenters[positions.First()].transform.position);
+
+            Tweener tween = DOTween.To((current) =>
+            {
+                float distance =
+                    Vector2.Distance(m_presenters[positions.First()].transform.position,
+                        m_presenters[positions.Last()].transform.position);
+                m_lineRenderer.SetPosition(1, Vector2.MoveTowards(m_presenters[positions.First()].transform.position, m_presenters[positions.Last()].transform.position, distance * current));
+            }, 0, 1, duration);
+
+            tween.SetEase(Ease.Linear);
+            tween.onComplete = () =>
+            {
+                m_lineRenderer.enabled = false;
+                for (int i = 0; i < positions.Count(); i++)
+                {
+                    m_presenters[positions.ElementAt(i)].transform
+                        .DOScale(m_presenters[positions.ElementAt(i)].transform.localScale * 3f, 0.75f);
+                    m_presenters[positions.ElementAt(i)].transform.DOMove(Vector3.zero, 0.75f);
+                }
+            };
+
+
         }
+
+
+
 
 
         private void OnCellChanged(DictionaryReplaceEvent<Vector2Int, CellModel> replace)
