@@ -15,11 +15,14 @@ namespace TicTacToe.Client
         , IDisposable
     {
         private readonly ReactiveDictionary<Vector2Int, CellModel> m_field = new ReactiveDictionary<Vector2Int, CellModel>();
+        private readonly ReactiveCollection<Vector2Int> m_winCellsPosition = new ReactiveCollection<Vector2Int>();
         private readonly IStateChangedObservable m_stateChangedObservable = default;
         private readonly ISelectOperation m_selectOperation = default;
         private IDisposable m_onStateChanged = default;
 
         public IReadOnlyReactiveDictionary<Vector2Int, CellModel> Field => m_field;
+
+        public IReadOnlyReactiveCollection<Vector2Int> WinCellsPosition => m_winCellsPosition;
 
         [Inject]
         public ClientFieldState(
@@ -59,6 +62,14 @@ namespace TicTacToe.Client
                 Debug.Log($"{nameof(ClientFieldState)}: got game over event {token}.");
                 GameOverEvent gameOver = JsonConvert.DeserializeObject<GameOverEvent>(token.ToString());
                 Debug.LogError($"THE GAME WAS OVER {token}");
+                if (gameOver.Symbol != null)
+                {
+                    foreach ((int, int) position in gameOver.WinCellPositions)
+                    {
+                        m_winCellsPosition.Add(new Vector2Int(position.Item1, position.Item2));
+                    }
+                }
+               
             }
             
         }

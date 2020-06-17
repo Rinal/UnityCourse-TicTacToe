@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Innovecs.DialoguesSystem;
 using TicTacToe.Server;
 using TicTacToe.Shared;
@@ -45,7 +47,21 @@ namespace TicTacToe.Client
             {
                 OnCellChanged(new DictionaryReplaceEvent<Vector2Int, CellModel>(pair.Key, null, pair.Value));
             }
+
+            Target
+                .WinCellsPosition
+                .ObserveAdd()
+                .Subscribe(AddWinCells)
+                .AddTo(m_subscriptions);
         }
+
+        private void AddWinCells(CollectionAddEvent<Vector2Int> obj)
+        {
+            Debug.Log("AddWinCells"); //ToDo
+            m_presenters[obj.Value].transform.DOScale(new Vector3(2, 2, 2), 0.5f);
+            m_presenters[obj.Value].transform.DOMove(Vector3.zero, 0.5f);
+        }
+
 
         private void OnCellChanged(DictionaryReplaceEvent<Vector2Int, CellModel> replace)
         {
