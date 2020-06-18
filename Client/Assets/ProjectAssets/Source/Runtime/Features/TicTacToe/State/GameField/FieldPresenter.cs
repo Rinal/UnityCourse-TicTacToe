@@ -83,10 +83,8 @@ namespace TicTacToe.Client
 
             Tweener tween = DOTween.To((current) =>
             {
-                float distance =
-                    Vector2.Distance(m_presenters[positions.First()].transform.position,
-                        m_presenters[positions.Last()].transform.position);
-                m_lineRenderer.SetPosition(1, Vector2.MoveTowards(m_presenters[positions.First()].transform.position, m_presenters[positions.Last()].transform.position, distance * current));
+                m_lineRenderer.SetPosition(1, Vector2.Lerp(m_presenters[positions.First()].transform.position, m_presenters[positions.Last()].transform.position, current));
+
             }, 0, 1, duration);
 
             tween.SetEase(Ease.Linear);
@@ -100,12 +98,7 @@ namespace TicTacToe.Client
                     m_presenters[positions.ElementAt(i)].transform.DOMove(Vector3.zero, 0.75f);
                 }
             };
-
-
         }
-
-
-
 
 
         private void OnCellChanged(DictionaryReplaceEvent<Vector2Int, CellModel> replace)

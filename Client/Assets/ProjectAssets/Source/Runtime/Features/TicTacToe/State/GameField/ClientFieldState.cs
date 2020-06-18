@@ -24,7 +24,7 @@ namespace TicTacToe.Client
 
         public IReadOnlyReactiveDictionary<Vector2Int, CellModel> Field => m_field;
 
-        public ISubject<IEnumerable<Vector2Int>> WinCellsPosition => m_winCellsPosition;
+        public IObservable<IEnumerable<Vector2Int>> WinCellsPosition => m_winCellsPosition;
 
         [Inject]
         public ClientFieldState(
