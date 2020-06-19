@@ -1,0 +1,13 @@
+{
+  "name": "com.external.unirx",
+  "displayName": "UniRx",
+  "version": "2.0.0",
+  "unity": "2019.3",
+  "keywords": [
+    "Rx",
+    "unity"
+  ],
+  "category": "Unity",
+  "description": "UniRx (Reactive Extensions for Unity) is a reimplementation of the .NET Reactive Extensions. https://github.com/neuecc/UniRx This package version is based on UniRx version 6.2.2\n\nFor more information of the current version please read changelog.",
+  "type": "library"
+}
